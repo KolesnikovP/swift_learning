@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+  @State private var id = 0
+  
   var activities = ["Archery", "Baseball", "Basketball", "Bowling", "Boxing", "Cricket", "Curling", "Fencing", "Golf", "Hiking", "Lacrosse", "Rugby", "Squash"]
   
   var colors: [Color] = [.blue, .cyan, .gray, .green, .indigo, .mint, .orange, .pink, .purple, .red]
@@ -36,11 +38,16 @@ struct ContentView: View {
           .font(.title)
       }
       .padding()
+      .transition(.slide)
+      .id(id)
       
       Spacer()
       
       Button("Next activity"){
-        selected = activities.randomElement() ?? "Archery"
+        withAnimation(.easeInOut(duration: 0.3)) {
+          selected = activities.randomElement() ?? "Archery"
+          id += 1
+        }
       }
       .buttonStyle(.borderedProminent)
     }

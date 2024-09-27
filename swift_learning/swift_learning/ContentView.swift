@@ -16,6 +16,8 @@ struct ContentView: View {
   
   @State private var selected = "Baseball"
   
+  static let bottomBar: ToolbarItemPlacement = .bottomBar
+  
   var body: some View {
     VStack {
       
@@ -50,6 +52,10 @@ struct ContentView: View {
         }
       }
       .buttonStyle(.borderedProminent)
+    }
+    TabView {
+      Text("First")
+      Text("Second")
     }
   }
 }
